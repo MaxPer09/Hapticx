@@ -6,3 +6,6 @@
 - Se creó un prototipo básico para provar el concepto.
 
  Creemos que se aprende haciendo, por eso hacemos varias pruebas antes de aplicarlas en el proyecto final.
+
+### 11 de agosto
+- Finalmente, conseguimos hacer que funcione la conexi+on bluetooth entre arduino y computadora, eso ya está terminado
