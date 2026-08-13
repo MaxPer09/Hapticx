@@ -48,9 +48,9 @@ void setup()
     /*
     ¿Qué es esto de aca arriba? Si sos un lector curioso y no entendés un carajo te paso un resumen:
     esto es un *Puntero de función*, ¿recordás los addEventListener() de back-end en 3ro? Sirve
-    para más o menos lo mismo. Se asocia una función a una clave y esa clave va a ser la orden que 
-    se envíe por el puerto serial. En resumen, cuando llega una orden se busca en el fichero que
-    función le corresponde, que en este caso va a ser activar un servomotor distinto por cada dedo.
+    para más o menos lo mismo. Se asocia una función a una clave y esa clave es el comando que se recibe
+    por el puerto serial. En resumen, cuando llega una orden se busca en el fichero (es como una lista)
+    qué función le corresponde, que en este caso va a ser activar un servomotor distinto por cada dedo.
     Lo bueno de esto es que es escalable, solo con añadir un puntero de función más se puede hacer
     funcionar un comando nuevo.
     PD: Esto podría haberse hecho con una cadena de if(orden == dedo), pero soy mazoquista y está
@@ -62,7 +62,8 @@ void loop()
 {
     if(Serial.available()>0)
     {
-        String comando = Serial.readStringUntil('\n').trim(); //Es FUNDAMENTAL que el que envie los comados los termine siempre con un \n, sino se coje toda la lógica
+        String comando = Serial.readStringUntil('\n'); //Es FUNDAMENTAL que el que envie los comados los termine siempre con un \n, sino se coje toda la lógica.
+        comando.trim;
         if (mapOrders.count(comando) > 0) {
             mapOrders[comando](); //<------------
           } else {
