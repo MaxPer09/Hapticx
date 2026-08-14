@@ -29,8 +29,18 @@ void flexPulgar()
     pulgar.write(140);
 }
 
-std::map<String, void(*)()> mapOrders;
+std::map<String, void(*)()> mapOrders; //Aca estoy creando un "mapa" (es parecido a los objetos de js, pero más choto) lo voy a usar para guardar funciones
+Servo dedos[5] = {indice,mayor,anular,menique,pulgar}; //Este es un array con todas las variables que representan a los servomotores. Lo voy a usar para algunas boludeces
 
+void resetServos()
+{
+    //La función resetServos() pone a todos los servomotores a 0, porque sino se quedarían en la última posición que
+    //se les pidió, trabando el dedo cuando no es necesario
+    for (int i = 0; i <= 5; i++)
+    {
+        dedos[i].write(0);
+    }
+}
 void setup()
 {
     Serial.begin(9600);
@@ -39,6 +49,11 @@ void setup()
     anular.attach(6);
     menique.attach(9);
     pulgar.attach(10);
+
+    for (int i = 0; i <= 5; i++)
+    {
+        dedos[i].write(0);      //apenas se prende el arduino, se ponen todos los servomotores en 0 :)
+    }
 
     mapOrders["indice"] = flexIndex;
     mapOrders["mayor"] = flexMayor;
@@ -63,7 +78,7 @@ void loop()
     if(Serial.available()>0)
     {
         String comando = Serial.readStringUntil('\n'); //Es FUNDAMENTAL que el que envie los comados los termine siempre con un \n, sino se coje toda la lógica.
-        comando.trim;
+        comando.trim();
         if (mapOrders.count(comando) > 0) {
             mapOrders[comando](); //<------------
           } else {
