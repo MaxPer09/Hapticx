@@ -1,7 +1,6 @@
 #include <Servo.h>
 #include <ArduinoSTL.h>
 #include <map>
-std::map<String, int> mapOrders; //Aca estoy creando un "mapa" (es parecido a los objetos de JS, pero más choto) lo voy a usar para guardar dedo = pin
 
 /*
 Estos tres arrays manejan la lógica interna del script. Cada index representa los datos de un dedo.
