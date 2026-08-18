@@ -116,4 +116,4 @@ void loop()
           }
     }
 }
-//Este código es feo, pero ser perfeccionista no es rentable.
+//Este código es feo, repetitivo, redundante, pero ser perfeccionista no es rentable.

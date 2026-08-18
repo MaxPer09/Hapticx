@@ -5,15 +5,15 @@ std::map<String, int> mapOrders; //Aca estoy creando un "mapa" (es parecido a lo
 
 /*
 Estos tres arrays manejan la lógica interna del script. Cada index representa los datos de un dedo.
-el índice tiene el index 1, el mayor tiene el 2...
+el índice tiene el index 0, el mayor tiene el 1...
 el array nombre almacena los nombres de los dedos, y se usa para los comandos que se reciben. El array
 de pines tiene la información de los pines a los que se une cada nombre. Y el array dedos es el que
 hace toda la magia, ya que en él se guardan las variables de tipo Servo asociadas a un nombre y a un pin
 (los dos arrays anteriores) y se usa para mover los servos en sí.
 */
-const char* nombres[5] = {"indice","mayor","anular","menique","pulgar"}; 
+const char* comandos[5] = {"indice","mayor","anular","menique","pulgar"}; 
 const  int pines[5] = {3,5,6,9,10}; 
-Servo dedos[5];
+const Servo dedos[5] = {indice,mayor,anular,menique,pulgar};
 
 void moverMotor(int i, int angulo) //el se proporciona el index del dedo que se quiere mover y el ángulo
 {
@@ -35,7 +35,7 @@ void setup()
     Serial.begin(9600);
     for(int i=0; i<5; i++)
     {
-        nombres[i].attatch(pines[i]); 
+        dedos[i].attatch(pines[i]); 
         mapOrders[nombres[i]] = i;
     }
 
@@ -49,7 +49,7 @@ void loop()
         String comando = Serial.readStringUntil('\n'); //Es FUNDAMENTAL que el que envie los comados los termine siempre con un \n, sino se coje toda la lógica.
         for(int i=0;i<=5;i++)
         {
-            if(comando == nombres[i]){
+            if(comando == comandos[i]){
                 moverMotor(i, 140);
             }
             
