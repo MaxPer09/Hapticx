@@ -1,12 +1,14 @@
 #include <Servo.h>
 #include <ArduinoSTL.h>
 #include <map>
+#include <functional>
 
-#define
-#define
-#define
-#define
-#define
+#define pot0 A0
+#define pot1 A1
+#define pot2 A2
+#define pot3 A3
+#define pot4 A4
+
 Servo indice;
 Servo mayor;
 Servo anular;
@@ -15,7 +17,7 @@ Servo pulgar;
 
 void flexIndex()
 {
-   indice.write(140); //los 140° son de ejemplo, no sé bien a cuantos grados deberíamos moverlo para trabar el dedo
+    indice.write(140); //los 140° son de ejemplo, no sé bien a cuantos grados deberíamos moverlo para trabar el dedo
 }
 void flexMayor()
 {
@@ -49,7 +51,7 @@ void extMenique()
 {
     menique.write(0);
 }
-void extMayor()
+void extpulgar()
 {
     pulgar.write(0);
 }
@@ -59,6 +61,8 @@ Servo dedos[5] = {indice,mayor,anular,menique,pulgar}; //Este es un array con to
 
 void resetServos()
 {
+    
+
     //La función resetServos() pone a todos los servomotores a 0, porque sino se quedarían en la última posición que
     //se les pidió, trabando el dedo cuando no es necesario
     for (int i = 0; i < 5; i++)
@@ -74,6 +78,42 @@ void setup()
     anular.attach(6);
     menique.attach(9);
     pulgar.attach(10);
+
+    std::map<std::string, std::string> indice; 
+    indice["comando"] = 0;
+    indice["pin"] = 0;
+    indice["max"] = 0;
+    indice["min"] = 0;
+    indice["flex"] = 0;
+    indice["ext"] = 0;
+    std::map<std::string, std::string> mayor; 
+    mayor["comando"] = 0;
+    mayor["pin"] = 0;
+    mayor["max"] = 0;
+    mayor["min"] = 0;
+    mayor["flex"] = 0;
+    mayor["ext"] = 0;
+    std::map<std::string, std::string> anular; 
+    anular["comando"] = ;
+    anular["pin"] = 0;
+    anular["max"] = 0;
+    anular["min"] = 0;
+    anular["flex"] = 0;
+    anular["ext"] = 0;
+    std::map<std::string, std::string> menique; 
+    menique["comando"] = 0;
+    menique["pin"] = 0;
+    menique["max"] = 0;
+    menique["min"] = 0;
+    menique["flex"] = 0;
+    menique["ext"] = 0;
+    std::map<std::string, std::string> pulgar; 
+    pulgar["comando"] = 0;
+    pulgar["pin"] = 0;
+    pulgar["max"] = 0;
+    pulgar["min"] = 0;
+    pulgar["flex"] = 0;
+    pulgar["ext"] = 0;
 
     resetServos(); //Se ponen todos los servomotores en "descanso"
 
