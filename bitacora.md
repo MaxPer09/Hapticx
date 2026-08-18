@@ -11,7 +11,11 @@
 - Finalmente, conseguimos hacer que funcione la conexión bluetooth entre arduino y computadora, eso ya está terminado
 
 ### 12 de agosto
+- Creamos el primer prototipo de código para controlar los servomotores usando punteros de función
 
+### 13 de agosto
+- Abandonamos el primer prototipo porque era un poco aparatoso.
+- Empezamos el prototipo 2 intentando reescribir todo para hacerlo más sencillo de leer
 
 ### 18 de agosto
 - Abandonamos el prototipo 2, no se adaptaba realmente a lo que necesitabamos.
