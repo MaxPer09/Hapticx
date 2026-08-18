@@ -35,7 +35,7 @@ void setup()
     Serial.begin(9600);
     for(int i=0; i<5; i++)
     {
-        dedos[i].attatch(pines[i]); 
+        nombres[i].attatch(pines[i]); 
         mapOrders[nombres[i]] = i;
     }
 

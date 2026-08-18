@@ -28,6 +28,26 @@ void flexPulgar()
 {
     pulgar.write(140);
 }
+void extIndice()
+{
+    indice.write(0);
+}
+void extMayor()
+{
+    mayor.write(0);
+}
+void extAnular()
+{
+    anular.write(0);
+}
+void extMenique()
+{
+    menique.write(0);
+}
+void extMayor()
+{
+    pulgar.write(0);
+}
 
 std::map<String, void(*)()> mapOrders; //Aca estoy creando un "mapa" (es parecido a los objetos de JS, pero más choto) lo voy a usar para guardar funciones :)
 Servo dedos[5] = {indice,mayor,anular,menique,pulgar}; //Este es un array con todas las variables que representan a los servomotores. Lo voy a usar para algunas boludeces
@@ -50,14 +70,19 @@ void setup()
     menique.attach(9);
     pulgar.attach(10);
 
-    resetServos(); //Se ponen todos llos servomotores en "descanso"
-
+    resetServos(); //Se ponen todos los servomotores en "descanso"
 
     mapOrders["indice"] = flexIndex;
     mapOrders["mayor"] = flexMayor;
     mapOrders["anular"] = flexAnular;
     mapOrders["menique"] = flexMenique;
     mapOrders["pulgar"] = flexPulgar;
+    mapOrders["extIndice"] = extIndice;
+    mapOrders["extMayor"] = extMayor;
+    mapOrders["extAnular"] = extAnular;
+    mapOrders["extMenique"] = extMenique;
+    mapOrders["extPulgar"] = extPulgar;
+    
     /*
     ¿Qué es esto de aca arriba? Si sos un lector curioso y no entendés un carajo te paso un resumen:
     esto es un *Puntero de función*, ¿recordás los addEventListener() de back-end en 3ro? Sirve
@@ -67,7 +92,7 @@ void setup()
     por cada dedo. Lo bueno de esto es que es escalable, solo con añadir un puntero de función más 
     se puede hacer funcionar un comando nuevo.
     PD: Esto podría haberse hecho con una cadena de if(orden == dedo), pero soy masoquista y está
-    bueno hacer cosas nuevas
+    bueno hacer cosas nuevas.
     */
 }
 
@@ -91,3 +116,4 @@ void loop()
           }
     }
 }
+//Este código es feo, pero ser perfeccionista no es rentable.
