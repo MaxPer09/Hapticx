@@ -51,7 +51,7 @@ void extMenique()
 {
     menique.write(0);
 }
-void extpulgar()
+void extPulgar()
 {
     pulgar.write(0);
 }
@@ -78,42 +78,6 @@ void setup()
     anular.attach(6);
     menique.attach(9);
     pulgar.attach(10);
-
-    std::map<std::string, std::string> indice; 
-    indice["comando"] = 0;
-    indice["pin"] = 0;
-    indice["max"] = 0;
-    indice["min"] = 0;
-    indice["flex"] = 0;
-    indice["ext"] = 0;
-    std::map<std::string, std::string> mayor; 
-    mayor["comando"] = 0;
-    mayor["pin"] = 0;
-    mayor["max"] = 0;
-    mayor["min"] = 0;
-    mayor["flex"] = 0;
-    mayor["ext"] = 0;
-    std::map<std::string, std::string> anular; 
-    anular["comando"] = ;
-    anular["pin"] = 0;
-    anular["max"] = 0;
-    anular["min"] = 0;
-    anular["flex"] = 0;
-    anular["ext"] = 0;
-    std::map<std::string, std::string> menique; 
-    menique["comando"] = 0;
-    menique["pin"] = 0;
-    menique["max"] = 0;
-    menique["min"] = 0;
-    menique["flex"] = 0;
-    menique["ext"] = 0;
-    std::map<std::string, std::string> pulgar; 
-    pulgar["comando"] = 0;
-    pulgar["pin"] = 0;
-    pulgar["max"] = 0;
-    pulgar["min"] = 0;
-    pulgar["flex"] = 0;
-    pulgar["ext"] = 0;
 
     resetServos(); //Se ponen todos los servomotores en "descanso"
 
