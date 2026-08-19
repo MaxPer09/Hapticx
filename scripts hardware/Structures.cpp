@@ -14,6 +14,11 @@ void dedoIndice::ext()
 {
     nombre.write(0);
 }
+void dedoIndice::reset()
+{
+    dedoIndice.min = 1023;
+    dedoIndice.max = 0
+}
 
 void dedoMayor::flex()
 {
@@ -22,6 +27,11 @@ void dedoMayor::flex()
 void dedoMayor::ext()
 {
     nombre.write(0);
+}
+void dedoIndice::reset()
+{
+    dedoIndice.min = 1023;
+    dedoIndice.max = 0
 }
 
 void dedoAnular::flex()

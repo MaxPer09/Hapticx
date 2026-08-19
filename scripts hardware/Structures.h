@@ -2,7 +2,7 @@
 #define PRUEBA_STRUCTURE_H
 
 /*
-Esto de acá son *Estructuras* y es lo más parecido a los "objetos" de  Javascript. Se guardan atributos pertenecientes
+Esto de acá son *Estructuras* y es lo más parecido a los "objetos" de  Javascript. Se guardan atributos (o métodos) pertenecientes
 a un grupo específico (ese grupo es el nombre de la estructura) y después se puede acceder a cada uno de esos muy
 facilmente con nombreEstructura.nombreAtributo . Como verás, también pueden guardarse funciones como atributos y varios
 tipos distintos de variables, lo cual es la razón por la que elegí esta manera de programar.
@@ -25,6 +25,7 @@ struct dedoIndice {
     int min = 1023;
     void flex();
     void ext();
+    void reset();
 };
 struct dedoMayor {
 
@@ -37,6 +38,7 @@ struct dedoMayor {
     int min = 1023;
     void flex();
     void ext();
+    void reset();
 };
 struct dedoAnular {
 
@@ -49,6 +51,7 @@ struct dedoAnular {
     int min = 1023;
     void flex();
     void ext();
+    void reset();
 };
 struct dedoMenique {
 
@@ -61,6 +64,7 @@ struct dedoMenique {
     int min = 1023;
     void flex();
     void ext();
+    void reset();
 };
 struct dedoPulgar {
 
@@ -73,6 +77,7 @@ struct dedoPulgar {
     int min = 1023;
     void flex();
     void ext();
+    void reset();
 };
 
 extern dedoIndice indice;
