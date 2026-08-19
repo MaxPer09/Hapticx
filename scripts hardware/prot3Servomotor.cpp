@@ -1,60 +1,13 @@
+//Recordatorio: ahora que creamos las estructuras de Structures.h, hay que rehacer este código basandose en ellas. Es por tu bien, lo prometo
+
+#include "Structures.h"
 #include <Servo.h>
-#include <ArduinoSTL.h>
-#include <map>
-#include <functional>
 
 #define pot0 A0
 #define pot1 A1
 #define pot2 A2
 #define pot3 A3
 #define pot4 A4
-
-Servo indice;
-Servo mayor;
-Servo anular;
-Servo menique;
-Servo pulgar;
-
-void flexIndex()
-{
-    indice.write(140); //los 140° son de ejemplo, no sé bien a cuantos grados deberíamos moverlo para trabar el dedo
-}
-void flexMayor()
-{
-    mayor.write(140);
-}
-void flexAnular()
-{
-    anular.write(140);
-}
-void flexMenique()
-{
-    menique.write(140);
-}
-void flexPulgar()
-{
-    pulgar.write(140);
-}
-void extIndice()
-{
-    indice.write(0);
-}
-void extMayor()
-{
-    mayor.write(0);
-}
-void extAnular()
-{
-    anular.write(0);
-}
-void extMenique()
-{
-    menique.write(0);
-}
-void extPulgar()
-{
-    pulgar.write(0);
-}
 
 std::map<String, void(*)()> mapOrders; //Aca estoy creando un "mapa" (es parecido a los objetos de JS, pero más choto) lo voy a usar para guardar funciones :)
 Servo dedos[5] = {indice,mayor,anular,menique,pulgar}; //Este es un array con todas las variables que representan a los servomotores. Lo voy a usar para algunas boludeces
@@ -72,12 +25,6 @@ void resetServos()
 }
 void setup()
 {
-    Serial.begin(9600);
-    indice.attach(3);
-    mayor.attach(5);
-    anular.attach(6);
-    menique.attach(9);
-    pulgar.attach(10);
 
     resetServos(); //Se ponen todos los servomotores en "descanso"
 
@@ -91,7 +38,8 @@ void setup()
     mapOrders["extAnular"] = extAnular;
     mapOrders["extMenique"] = extMenique;
     mapOrders["extPulgar"] = extPulgar;
-    
+
+
     /*
     ¿Qué es esto de aca arriba? Si sos un lector curioso y no entendés un carajo te paso un resumen:
     esto es un *Puntero de función*, ¿recordás los addEventListener() de back-end en 3ro? Sirve

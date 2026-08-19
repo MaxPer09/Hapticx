@@ -20,4 +20,6 @@
 ### 18 de agosto
 - Abandonamos el prototipo 2, no se adaptaba realmente a lo que necesitabamos.
 - Decidimos que también vamos a incluir potenciometros ademas de los servomotores.
-- Casi terminamos el prototipo 3, el cual usa estructuras en vez de arrays. Es útil para los potenciometros
+- planeamos y empezamos el prototipo 3, el cual usa estructuras en vez de arrays. Es útil para los potenciometros
+- Terminamos todo el archivo con las estructuras y lo transformamos en header para incluirlo como "librería" en IDE, falta la lógica
+- Escribí instrucciones de uso en el README
