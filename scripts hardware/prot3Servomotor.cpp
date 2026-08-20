@@ -1,45 +1,33 @@
 //Recordatorio: ahora que creamos las estructuras de Structures.h, hay que rehacer este código basandose en ellas. Es por tu bien, lo prometo
-
+#include <arduinoSTL.h>
 #include "Structures.h"
 #include <Servo.h>
-
-#define pot0 A0
-#define pot1 A1
-#define pot2 A2
-#define pot3 A3
-#define pot4 A4
+#include <map.h>
 
 std::map<String, void(*)()> mapOrders; //Aca estoy creando un "mapa" (es parecido a los objetos de JS, pero más choto) lo voy a usar para guardar funciones :)
-Servo dedos[5] = {indice,mayor,anular,menique,pulgar}; //Este es un array con todas las variables que representan a los servomotores. Lo voy a usar para algunas boludeces
 
 void resetServos()
 {
-    
-
-    //La función resetServos() pone a todos los servomotores a 0, porque sino se quedarían en la última posición que
-    //se les pidió, trabando el dedo cuando no es necesario
-    for (int i = 0; i < 5; i++)
-    {
-        dedos[i].write(0);
-    }
+    indice.ext();
+    mayor.ext();
+    anular.ext();
+    menique.ext();
+    pulgar.ext();
 }
 void setup()
 {
-
     resetServos(); //Se ponen todos los servomotores en "descanso"
 
-    mapOrders["indice"] = flexIndex;
-    mapOrders["mayor"] = flexMayor;
-    mapOrders["anular"] = flexAnular;
-    mapOrders["menique"] = flexMenique;
-    mapOrders["pulgar"] = flexPulgar;
-    mapOrders["extIndice"] = extIndice;
-    mapOrders["extMayor"] = extMayor;
-    mapOrders["extAnular"] = extAnular;
-    mapOrders["extMenique"] = extMenique;
-    mapOrders["extPulgar"] = extPulgar;
-
-
+    mapOrders["indice"] = indice.flex;
+    mapOrders["mayor"] = mayor.flex;
+    mapOrders["anular"] = anular.flex;
+    mapOrders["menique"] = menique.flex;
+    mapOrders["pulgar"] = pulgar.flex;
+    mapOrders["extIndice"] = indice.ext;
+    mapOrders["extMayor"] = mayor.ext;
+    mapOrders["extAnular"] = anular.ext;
+    mapOrders["extMenique"] = menique.ext;
+    mapOrders["extPulgar"] = pulgar.ext;
     /*
     ¿Qué es esto de aca arriba? Si sos un lector curioso y no entendés un carajo te paso un resumen:
     esto es un *Puntero de función*, ¿recordás los addEventListener() de back-end en 3ro? Sirve
@@ -73,4 +61,3 @@ void loop()
           }
     }
 }
-//Este código es feo, repetitivo, redundante, pero ser perfeccionista no es rentable.

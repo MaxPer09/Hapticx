@@ -17,7 +17,7 @@ Los siguientes pasos solo se tendrán que hacer una vez en la computadora que se
     -Structures.cpp
     Y estos tres archivos deberían tener el mismo código que en el repositorio
 
-    Una vez hecho esto, cada vez que se quiera iniciar el código en arduino IDE, sea por lo que sea, de tiene que:
+    Una vez hecho esto, cada vez que se quiera iniciar el código en arduino IDE, sea por lo que sea, se tiene que:
     - Ir a "file" arriba a la izquierda
     - Seleccionar "open"
     - Abrir el archivo .ino que está en la carpeta del sketch
@@ -25,10 +25,11 @@ Los siguientes pasos solo se tendrán que hacer una vez en la computadora que se
 
 ## Pasos para la conexión bluetooth
 si el arduino está energizado (no es necesario que sea por el puerto USB) y se quiere vincular la computadora con el módulo bluetooth (llamado HC-06), hacer lo siguiente:
-- Acegurarse que el arduino está prendido
+- Asegurarse que el arduino está prendido
 - Ir a configuración de windows 
 - Ir a bluetooth y dispositivos
 - Apretar en "agregar dispositivo" y elegir la opción bluetooth de la ventana emergente
 - La computadora empezará a mostrar un listado de los dispositivos cercanos, hay que buscar la opción llamada HC-06 y vincularse con la contraseña 1234
 - La comunicación debería abrirse en el puerto COM5, usar ese puerto en arduino IDE para la comunicación
-Si no encontrás la opción de HC-06 en el listado, verificá que la luz del módulo bluetooth del guante está parpadeando rápido. Si está apagada significa que el módulo no está energizado. Si parpadea muy lento, entre 5 y 10 segundos, significa que el módulo ya está conectado a otra computadora
+
+Si no encontrás la opción de HC-06 en el listado, verificá que la luz del módulo bluetooth del guante está parpadeando rápido. Si está apagada significa que el módulo no está energizado. Si parpadea muy lento, entre 5 y 10 segundos, significa que el módulo ya está conectado a una computadora,

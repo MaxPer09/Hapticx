@@ -8,11 +8,11 @@ dedoPulgar pulgar;
 
 void dedoIndice::flex()
 {
-    nombre.write(map(analogRead(potePin), 0, 1023, min, max));
+    motor.write(map(analogRead(potePin), min, max, 0, 180));
 }
 void dedoIndice::ext()
 {
-    nombre.write(0);
+    motor.write(0);
 }
 void dedoIndice::reset()
 {
@@ -22,41 +22,56 @@ void dedoIndice::reset()
 
 void dedoMayor::flex()
 {
-    nombre.write(map(analogRead(potePin), 0, 1023, min, max));
+    motor.write(map(analogRead(potePin), min, max, 0, 180));
 }
 void dedoMayor::ext()
 {
-    nombre.write(0);
+    motor.write(0);
 }
-void dedoIndice::reset()
+void dedoMayor::reset()
 {
-    dedoIndice.min = 1023;
-    dedoIndice.max = 0
+    dedoMayor.min = 1023;
+    dedoMayor.max = 0
 }
 
 void dedoAnular::flex()
 {
-    nombre.write(map(analogRead(potePin), 0, 1023, min, max));
+    motor.write(map(analogRead(potePin), min, max, 0, 180));
 }
 void dedoAnular::ext()
 {
-    nombre.write(0);
+    motor.write(0);
+}
+void dedoAnular::reset()
+{
+    dedoAnular.min = 1023;
+    dedoAnular.max = 0
 }
 
 void dedoMenique::flex()
 {
-    nombre.write(map(analogRead(potePin), 0, 1023, min, max));
+    motor.write(map(analogRead(potePin), min, max, 0, 180));
 }
 void dedoMenique::ext()
 {
-    nombre.write(0);
+    motor.write(0);
+}
+void dedoMenique::reset()
+{
+    dedoMenique.min = 1023;
+    dedoMenique.max = 0
 }
 
 void dedoPulgar::flex()
 {
-    nombre.write(map(analogRead(potePin), 0, 1023, min, max));
+    motor.write(map(analogRead(potePin), min, max, 0, 180));
 }
 void dedoPulgar::ext()
 {
-    nombre.write(0);
+    motor.write(0);
+}
+void dedoPulgar::reset()
+{
+    dedoPulgar.min = 1023;
+    dedoPulgar.max = 0
 }

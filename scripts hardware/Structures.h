@@ -3,8 +3,8 @@
 
 /*
 Esto de acá son *Estructuras* y es lo más parecido a los "objetos" de  Javascript. Se guardan atributos (o métodos) pertenecientes
-a un grupo específico (ese grupo es el nombre de la estructura) y después se puede acceder a cada uno de esos muy
-facilmente con nombreEstructura.nombreAtributo . Como verás, también pueden guardarse funciones como atributos y varios
+a un grupo específico (ese grupo es el motor de la estructura) y después se puede acceder a cada uno de esos muy
+facilmente con motorEstructura.motorAtributo . Como verás, también pueden guardarse funciones como atributos y varios
 tipos distintos de variables, lo cual es la razón por la que elegí esta manera de programar.
  Aca se guardan los datos de todos los dedos, tanto de sus servomotores como de sus potenciometros. 
 PD:Las variables min y max son para calibrar los potenciometros. Al enviar el comando "calibrar" deberían de resetearse
@@ -15,8 +15,7 @@ a sus valores por defecto
 #include <Servo.h>
 
 struct dedoIndice {
-
-    Servo nombre;
+    Servo motor;
     String comandoFlex = "indice";
     String comandoExt = "extIndice";
     int servoPin = 3;
@@ -28,8 +27,7 @@ struct dedoIndice {
     void reset();
 };
 struct dedoMayor {
-
-    Servo nombre;
+    Servo motor;
     String comandoFlex = "mayor";
     String comandoExt = "extMayor";
     int servoPin = 5;
@@ -41,8 +39,7 @@ struct dedoMayor {
     void reset();
 };
 struct dedoAnular {
-
-    Servo nombre;
+    Servo motor;
     String comandoFlex = "anular";
     String comandoExt = "extAnular";
     int servoPin = 6;
@@ -54,8 +51,7 @@ struct dedoAnular {
     void reset();
 };
 struct dedoMenique {
-
-    Servo nombre;
+    Servo motor;
     String comandoFlex = "menique";
     String comandoExt = "extMenique";
     int servoPin = 9;
@@ -67,8 +63,7 @@ struct dedoMenique {
     void reset();
 };
 struct dedoPulgar {
-
-    Servo nombre;
+    Servo motor;
     String comandoFlex = "pulgar";
     String comandoExt = "extPulgar";
     int servoPin = 10;
