@@ -16,8 +16,8 @@ void dedoIndice::ext()
 }
 void dedoIndice::reset()
 {
-    dedoIndice.min = 1023;
-    dedoIndice.max = 0
+    indice.min = 1023;
+    indice.max = 0;
 }
 
 void dedoMayor::flex()
@@ -30,8 +30,8 @@ void dedoMayor::ext()
 }
 void dedoMayor::reset()
 {
-    dedoMayor.min = 1023;
-    dedoMayor.max = 0
+    mayor.min = 1023;
+    mayor.max = 0;
 }
 
 void dedoAnular::flex()
@@ -44,8 +44,8 @@ void dedoAnular::ext()
 }
 void dedoAnular::reset()
 {
-    dedoAnular.min = 1023;
-    dedoAnular.max = 0
+    anular.min = 1023;
+    anular.max = 0;
 }
 
 void dedoMenique::flex()
@@ -58,8 +58,8 @@ void dedoMenique::ext()
 }
 void dedoMenique::reset()
 {
-    dedoMenique.min = 1023;
-    dedoMenique.max = 0
+    menique.min = 1023;
+    menique.max = 0;
 }
 
 void dedoPulgar::flex()
@@ -72,6 +72,6 @@ void dedoPulgar::ext()
 }
 void dedoPulgar::reset()
 {
-    dedoPulgar.min = 1023;
-    dedoPulgar.max = 0
+    pulgar.min = 1023;
+    pulgar.max = 0;
 }

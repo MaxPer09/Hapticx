@@ -1,10 +1,11 @@
-//Recordatorio: ahora que creamos las estructuras de Structures.h, hay que rehacer este código basandose en ellas. Es por tu bien, lo prometo
-#include <arduinoSTL.h>
 #include "Structures.h"
 #include <Servo.h>
-#include <map.h>
+#include <ArduinoSTL.h>
+#include <Map>
+#include <functional>
 
-std::map<String, void(*)()> mapOrders; //Aca estoy creando un "mapa" (es parecido a los objetos de JS, pero más choto) lo voy a usar para guardar funciones :)
+std::map<String, std::function<void()>> mapOrders; //Aca estoy creando un "mapa" (es parecido a los objetos de JS, pero más choto) lo voy a usar para guardar funciones
+// mensaje del mismo progrmador pero del futuro: cambie le tipo de mapa para que pueda guardar las funciones que están dentro de una estructura, porque antes solo podía guardar funciones globales
 
 void resetServos()
 {
@@ -16,23 +17,23 @@ void resetServos()
 }
 void setup()
 {
-    indice.motor.attatch(servoPin);
-    mayor.motor.attatch(servoPin);
-    anular.motor.attatch(servoPin);
-    menique.motor.attatch(servoPin);
-    pulgar.motor.attatch(servoPin);
+    indice.motor.attach(indice.servoPin);
+    mayor.motor.attach(mayor.servoPin);
+    anular.motor.attach(anular.servoPin);
+    menique.motor.attach(menique.servoPin);
+    pulgar.motor.attach(pulgar.servoPin);
     resetServos(); //Se ponen todos los servomotores en "descanso"
 
-    mapOrders["indice"] = indice.flex;
-    mapOrders["mayor"] = mayor.flex;
-    mapOrders["anular"] = anular.flex;
-    mapOrders["menique"] = menique.flex;
-    mapOrders["pulgar"] = pulgar.flex;
-    mapOrders["extIndice"] = indice.ext;
-    mapOrders["extMayor"] = mayor.ext;
-    mapOrders["extAnular"] = anular.ext;
-    mapOrders["extMenique"] = menique.ext;
-    mapOrders["extPulgar"] = pulgar.ext;
+    mapOrders["indice"] = [](){ indice.flex(); }; //todos esos [], () y {} tienen que estar ahí por el tipo de mapa, están ahí para que, supuestamente, el mapa sepa a que estructura ir a buscar esas funciones. pero como las estructuras son globales pueden quedar vacios (si, ya se, no tiene sentido pero es así)
+    mapOrders["mayor"] = [](){ mayor.flex(); };
+    mapOrders["anular"] = [](){ anular.flex(); };
+    mapOrders["menique"] = [](){ menique.flex(); };
+    mapOrders["pulgar"] = [](){ pulgar.flex(); };
+    mapOrders["extIndice"] = [](){ indice.ext(); };
+    mapOrders["extMayor"] = [](){ mayor.ext(); };
+    mapOrders["extAnular"] = [](){ anular.ext(); };
+    mapOrders["extMenique"] = [](){ menique.ext(); };
+    mapOrders["extPulgar"] = [](){ pulgar.ext(); };
     /*
     ¿Qué es esto de aca arriba? Si sos un lector curioso y no entendés un carajo te paso un resumen:
     esto es un *Puntero de función*, ¿recordás los addEventListener() de back-end en 3ro? Sirve
