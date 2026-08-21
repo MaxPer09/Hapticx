@@ -16,6 +16,11 @@ void resetServos()
 }
 void setup()
 {
+    indice.motor.attatch(servoPin);
+    mayor.motor.attatch(servoPin);
+    anular.motor.attatch(servoPin);
+    menique.motor.attatch(servoPin);
+    pulgar.motor.attatch(servoPin);
     resetServos(); //Se ponen todos los servomotores en "descanso"
 
     mapOrders["indice"] = indice.flex;
