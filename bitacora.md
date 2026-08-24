@@ -23,3 +23,6 @@
 - planeamos y empezamos el prototipo 3, el cual usa estructuras en vez de arrays. Es útil para los potenciometros
 - Terminamos todo el archivo con las estructuras y lo transformamos en header para incluirlo como "librería" en IDE, falta la lógica
 - Escribí instrucciones de uso en el README
+
+#### 24 de Agosto
+- El prototipo 3 ya es completamente funcional, solo queda la construcción física del hardware para  hacer las pruebas 

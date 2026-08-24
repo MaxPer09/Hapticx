@@ -2,11 +2,9 @@
 #include <Servo.h>
 #include <ArduinoSTL.h>
 #include <Map>
-#include <functional>
 
-std::map<String, std::function<void()>> mapOrders; //Aca estoy creando un "mapa" (es parecido a los objetos de JS, pero más choto) lo voy a usar para guardar funciones
-// mensaje del mismo progrmador pero del futuro: cambie le tipo de mapa para que pueda guardar las funciones que están dentro de una estructura, porque antes solo podía guardar funciones globales
-
+std::map<String, void(*)()> mapOrders; //Aca estoy creando un "mapa" (es parecido a los objetos de JS, pero más choto) lo voy a usar para guardar funciones.
+// mensaje del mismo progrmador pero del futuro: cambié e tipo de mapa para que pueda guardar las funciones que están dentro de una estructura, porque antes solo podía guardar funciones globales
 void resetServos()
 {
     indice.ext();
@@ -15,6 +13,19 @@ void resetServos()
     menique.ext();
     pulgar.ext();
 }
+
+//Lo que hay aca abajo son funciones puente globales. Como me hice el pija y guarde funciones dentro de estructuras, ahora el mapa no puede llamarlas porque no son glibales, asi que hay que hacer estas funciones puente
+indiceflex(){indice.flex();}
+mayorflex(){mayor.flex();}
+anularflex(){anular.flex();}
+meniqueflex(){menique.flex();}
+pulgarflex(){pulgar.flex();}
+indiceext(){indice.ext();}
+mayorext(){mayor.ext();}
+anularext(){anular.ext();}
+meniqueext(){menique.ext();}
+pulgarext(){pulgar.ext();}
+
 void setup()
 {
     indice.motor.attach(indice.servoPin);
@@ -24,16 +35,16 @@ void setup()
     pulgar.motor.attach(pulgar.servoPin);
     resetServos(); //Se ponen todos los servomotores en "descanso"
 
-    mapOrders["indice"] = [](){ indice.flex(); }; //todos esos [], () y {} tienen que estar ahí por el tipo de mapa, están ahí para que, supuestamente, el mapa sepa a que estructura ir a buscar esas funciones. pero como las estructuras son globales pueden quedar vacios (si, ya se, no tiene sentido pero es así)
-    mapOrders["mayor"] = [](){ mayor.flex(); };
-    mapOrders["anular"] = [](){ anular.flex(); };
-    mapOrders["menique"] = [](){ menique.flex(); };
-    mapOrders["pulgar"] = [](){ pulgar.flex(); };
-    mapOrders["extIndice"] = [](){ indice.ext(); };
-    mapOrders["extMayor"] = [](){ mayor.ext(); };
-    mapOrders["extAnular"] = [](){ anular.ext(); };
-    mapOrders["extMenique"] = [](){ menique.ext(); };
-    mapOrders["extPulgar"] = [](){ pulgar.ext(); };
+    mapOrders["indice"] = indiceflex(); 
+    mapOrders["mayor"] = mayorflex();
+    mapOrders["anular"] = anularflex();
+    mapOrders["menique"] = meniqueflex();
+    mapOrders["pulgar"] = pulgarflex();
+    mapOrders["extIndice"] = indiceext();
+    mapOrders["extMayor"] = mayorext();
+    mapOrders["extAnular"] = anularext();
+    mapOrders["extMenique"] = meniqueext();
+    mapOrders["extPulgar"] = pulgarext();
     /*
     ¿Qué es esto de aca arriba? Si sos un lector curioso y no entendés un carajo te paso un resumen:
     esto es un *Puntero de función*, ¿recordás los addEventListener() de back-end en 3ro? Sirve
@@ -46,7 +57,6 @@ void setup()
     bueno hacer cosas nuevas.
     */
 }
-
 void loop()
 {
     if(Serial.available()>0)
