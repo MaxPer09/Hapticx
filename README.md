@@ -14,7 +14,7 @@ Los siguientes pasos solo se tendrán que hacer una vez en la computadora que se
     Tras guardar se debería de haber creado una carpeta con:
     - prot3Servomotor.ino (o el sketch prinicpal que estemos usando).
     - Structures.h
-    -Structures.cpp
+    - Structures.cpp
     Y estos tres archivos deberían tener el mismo código que en el repositorio
 
     Una vez hecho esto, cada vez que se quiera iniciar el código en arduino IDE, sea por lo que sea, se tiene que:
