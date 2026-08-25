@@ -41,8 +41,14 @@ void ejecutarCalibracion() {
         anular.calibrar();
         menique.calibrar();
         pulgar.calibrar();
+        indice.obtenerFlexion();
+        mayor.obtenerFlexion();
+        anular.obtenerFlexion();
+        menique.obtenerFlexion();
+        pulgar.obtenerFlexion();
         delay(10);
     }
+
 }
 
 
