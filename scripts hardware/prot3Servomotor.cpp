@@ -3,6 +3,12 @@
 #include <ArduinoSTL.h>
 #include <Map>
 
+indice = new indice();
+mayor = new mayor();
+anular = new anular();
+menique = new menique();
+pulgar = new pulgar();
+
 std::map<String, void(*)()> mapOrders; //Aca estoy creando un "mapa" (es parecido a los objetos de JS, pero más choto) lo voy a usar para guardar funciones.
 // mensaje del mismo progrmador pero del futuro: cambié e tipo de mapa para que pueda guardar las funciones que están dentro de una estructura, porque antes solo podía guardar funciones globales
 void resetServos()
@@ -32,8 +38,6 @@ void ejecutarCalibracion() {
     anular.reset();
     menique.reset();
     pulgar.reset();
-
-
     unsigned long tiempoInicio = millis();
     while (millis()-tiempoInicio < 5000){
         indice.calibrar();

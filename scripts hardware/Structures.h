@@ -14,6 +14,19 @@ a sus valores por defecto
 #include <Arduino.h>
 #include <Servo.h>
 
+class dedos 
+{
+    public:
+    //Nos llegó la hora... hay que pasar todo a objetos y clases porque c++ es un lenguaje orientado a objetos
+    Servo motor;
+    String comandoFlex;
+    String comandoExt;
+    int servoPin;
+    int potePin;
+    int max;
+    int min;
+
+}
 struct dedoIndice {
     Servo motor;
     String comandoFlex = "indice";
