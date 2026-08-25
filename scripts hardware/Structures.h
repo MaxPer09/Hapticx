@@ -25,21 +25,8 @@ struct dedoIndice {
     void flex();
     void ext();
     void reset();
-    // se llama repetidamente mientras el usuario abre y cierra la mano
-    void calibrar () {
-        int lectura = analogRead(potePin);
-        if (lectura < min) min = lectura;
-        if (lectura > max) max = lectura;
-    }
-        int obtenerFlexion (){
-// no sé si es necesario pero para evitar errores si no se calibró
-            if (max <= min) return 0;
-            int lecturaActual = analogRead (potePin);
-            int mapeado = map (lecturaActual, min, max, 0, 180);
-//Esta línea de abajo es para mantener el valor estrictamente entre 0 y 180
-            return constrain (mapeado, 0, 180);
-}
-
+    void calibrar ();
+    int obtenerFlexion ();
 };
 struct dedoMayor {
     Servo motor;
@@ -53,19 +40,8 @@ struct dedoMayor {
     void ext();
     void reset();
     // se llama repetidamente mientras el usuario abre y cierra la mano
-    void calibrar () {
-        int lectura = analogRead(potePin);
-        if (lectura < min) min = lectura;
-        if (lectura > max) max = lectura;
-    }
-        int obtenerFlexion (){
-// no sé si es necesario pero para evitar errores si no se calibró
-            if (max <= min) return 0;
-            int lecturaActual = analogRead (potePin);
-            int mapeado = map (lecturaActual, min, max, 0, 180);
-//Esta línea de abajo es para mantener el valor estrictamente entre 0 y 180
-            return constrain (mapeado, 0, 180);
-}
+    void calibrar ();
+    int obtenerFlexion ();
 
 };
 struct dedoAnular {
@@ -79,20 +55,8 @@ struct dedoAnular {
     void flex();
     void ext();
     void reset();
-    // se llama repetidamente mientras el usuario abre y cierra la mano
-    void calibrar () {
-        int lectura = analogRead(potePin);
-        if (lectura < min) min = lectura;
-        if (lectura > max) max = lectura;
-    }
-        int obtenerFlexion (){
-// no sé si es necesario pero para evitar errores si no se calibró
-            if (max <= min) return 0;
-            int lecturaActual = analogRead (potePin);
-            int mapeado = map (lecturaActual, min, max, 0, 180);
-//Esta línea de abajo es para mantener el valor estrictamente entre 0 y 180
-            return constrain (mapeado, 0, 180);
-}
+    void calibrar ();
+    int obtenerFlexion ();
 
 };
 struct dedoMenique {
@@ -106,20 +70,8 @@ struct dedoMenique {
     void flex();
     void ext();
     void reset();
-    // se llama repetidamente mientras el usuario abre y cierra la mano
-    void calibrar () {
-        int lectura = analogRead(potePin);
-        if (lectura < min) min = lectura;
-        if (lectura > max) max = lectura;
-    }
-        int obtenerFlexion (){
-// no sé si es necesario pero para evitar errores si no se calibró
-            if (max <= min) return 0;
-            int lecturaActual = analogRead (potePin);
-            int mapeado = map (lecturaActual, min, max, 0, 180);
-//Esta línea de abajo es para mantener el valor estrictamente entre 0 y 180
-            return constrain (mapeado, 0, 180);
-}
+    void calibrar ();
+    int obtenerFlexion ();
 
 };
 struct dedoPulgar {
@@ -133,20 +85,8 @@ struct dedoPulgar {
     void flex();
     void ext();
     void reset();
-    // se llama repetidamente mientras el usuario abre y cierra la mano
-    void calibrar () {
-        int lectura = analogRead(potePin);
-        if (lectura < min) min = lectura;
-        if (lectura > max) max = lectura;
-    }
-        int obtenerFlexion (){
-// no sé si es necesario pero para evitar errores si no se calibró
-            if (max <= min) return 0;
-            int lecturaActual = analogRead (potePin);
-            int mapeado = map (lecturaActual, min, max, 0, 180);
-//Esta línea de abajo es para mantener el valor estrictamente entre 0 y 180
-            return constrain (mapeado, 0, 180);
-}
+    void calibrar ();
+    int obtenerFlexion ();
 
 };
 
