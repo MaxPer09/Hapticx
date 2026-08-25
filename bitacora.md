@@ -26,3 +26,7 @@ Creemos que se aprende haciendo, por eso hacemos varias pruebas antes de aplicar
 
 #### 24 de Agosto
 - El prototipo 3 ya es completamente funcional, solo queda la construcción física del hardware para  hacer las pruebas 
+
+### 25 de Agosto
+- Las estructuras daban un error al compilarlas porque no pertenecían a una clase, ya creamos la clase y las hicimos
+hijas de la estructura "dedos"

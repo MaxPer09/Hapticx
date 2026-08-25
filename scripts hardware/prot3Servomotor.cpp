@@ -3,12 +3,6 @@
 #include <ArduinoSTL.h>
 #include <Map>
 
-indice = new indice();
-mayor = new mayor();
-anular = new anular();
-menique = new menique();
-pulgar = new pulgar();
-
 std::map<String, void(*)()> mapOrders; //Aca estoy creando un "mapa" (es parecido a los objetos de JS, pero más choto) lo voy a usar para guardar funciones.
 // mensaje del mismo progrmador pero del futuro: cambié e tipo de mapa para que pueda guardar las funciones que están dentro de una estructura, porque antes solo podía guardar funciones globales
 void resetServos()
@@ -20,7 +14,7 @@ void resetServos()
     pulgar.ext();
 }
 
-//Lo que hay aca abajo son funciones puente globales. Como me hice el pija y guarde funciones dentro de estructuras, ahora el mapa no puede llamarlas porque no son glibales, asi que hay que hacer estas funciones puente
+//Lo que hay aca abajo son funciones puente globales. Como me hice el pija y guarde funciones dentro de estructuras, ahora el mapa no puede llamarlas porque no son globales, asi que hay que hacer estas funciones puente
 indiceflex(){indice.flex();}
 mayorflex(){mayor.flex();}
 anularflex(){anular.flex();}
@@ -52,9 +46,7 @@ void ejecutarCalibracion() {
         pulgar.obtenerFlexion();
         delay(10);
     }
-
 }
-
 
 void setup()
 {
