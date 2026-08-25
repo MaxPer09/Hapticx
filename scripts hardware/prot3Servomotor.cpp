@@ -26,6 +26,26 @@ anularext(){anular.ext();}
 meniqueext(){menique.ext();}
 pulgarext(){pulgar.ext();}
 
+void ejecutarCalibracion() {
+    indice.reset();
+    mayor.reset();
+    anular.reset();
+    menique.reset();
+    pulgar.reset();
+
+
+    unsigned long tiempoInicio = millis();
+    while (millis()-tiempoInicio < 5000){
+        indice.calibrar();
+        mayor.calibrar();
+        anular.calibrar();
+        menique.calibrar();
+        pulgar.calibrar();
+        delay(10);
+    }
+}
+
+
 void setup()
 {
     indice.motor.attach(indice.servoPin);
@@ -56,6 +76,9 @@ void setup()
     PD: Esto podría haberse hecho con una cadena de if(orden == dedo), pero soy masoquista y está
     bueno hacer cosas nuevas.
     */
+    ejecutarCalibracion();
+    mapOrders ["calibrar"] = ejecutarCalibracion;
+
 }
 void loop()
 {
