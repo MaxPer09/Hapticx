@@ -1,162 +1,110 @@
-#include "Structures.h"
+#ifndef PRUEBA_STRUCTURE_H
+#define PRUEBA_STRUCTURE_H
 
-dedoIndice indice;
-dedoMayor mayor;
-dedoAnular anular;
-dedoMenique menique;
-dedoPulgar pulgar;
+#include <Arduino.h>
+#include <Servo.h>
 
-void dedoIndice::calibrar()
-{
-    int lectura = analogRead(potePin);
-        if (lectura < min) min = lectura;
-        if (lectura > max) max = lectura;
-}
+class dedos {
+public:
+    Servo motor;
+    String comandoFlex;
+    String comandoExt;
+    int servoPin;
+    int potePin;
+    int max;
+    int min;
 
-int dedoIndice::obtenerFlexion()
-{
-    // no sé si es necesario pero para evitar errores si no se calibró
-    if (max <= min) return 0;
-    int lecturaActual = analogRead (potePin);
-    int mapeado = map (lecturaActual, min, max, 0, 180);
-//Esta línea de abajo es para mantener el valor estrictamente entre 0 y 180
-    return constrain (mapeado, 0, 180);
-}
+    virtual void flex() = 0;
+    virtual void ext() = 0;
+    virtual void reset() = 0;
+    virtual void calibrar() = 0;
+    virtual int obtenerFlexion() = 0;
+};
 
-void dedoIndice::flex()
-{
-    motor.write(map(analogRead(potePin), min, max, 0, 180));
-}
-void dedoIndice::ext()
-{
-    motor.write(0);
-}
-void dedoIndice::reset()
-{
-    indice.min = 1023;
-    indice.max = 0;
-}
+struct dedoIndice : public dedos {
+    dedoIndice() {
+        comandoFlex = "indice";
+        comandoExt = "extIndice";
+        servoPin = 3;
+        potePin = A0;
+        max = 0;
+        min = 1023;
+    }
+    void flex() override;
+    void ext() override;
+    void reset() override;
+    void calibrar() override;
+    int obtenerFlexion() override;
+};
 
-void dedoMayor::calibrar()
-{
-    int lectura = analogRead(potePin);
-        if (lectura < min) min = lectura;
-        if (lectura > max) max = lectura;
-}
+struct dedoMayor : public dedos {
+    dedoMayor() {
+        comandoFlex = "mayor";
+        comandoExt = "extMayor";
+        servoPin = 5;
+        potePin = A1;
+        max = 0;
+        min = 1023;
+    }
+    void flex() override;
+    void ext() override;
+    void reset() override;
+    void calibrar() override;
+    int obtenerFlexion() override;
+};
 
-int dedoMayor::obtenerFlexion()
-{
-    // no sé si es necesario pero para evitar errores si no se calibró
-    if (max <= min) return 0;
-    int lecturaActual = analogRead (potePin);
-    int mapeado = map (lecturaActual, min, max, 0, 180);
-//Esta línea de abajo es para mantener el valor estrictamente entre 0 y 180
-    return constrain (mapeado, 0, 180);
-}
+struct dedoAnular : public dedos {
+    dedoAnular() {
+        comandoFlex = "anular";
+        comandoExt = "extAnular";
+        servoPin = 6;
+        potePin = A2;
+        max = 0;
+        min = 1023;
+    }
+    void flex() override;
+    void ext() override;
+    void reset() override;
+    void calibrar() override;
+    int obtenerFlexion() override;
+};
 
-void dedoMayor::flex()
-{
-    motor.write(map(analogRead(potePin), min, max, 0, 180));
-}
-void dedoMayor::ext()
-{
-    motor.write(0);
-}
-void dedoMayor::reset()
-{
-    mayor.min = 1023;
-    mayor.max = 0;
-}
+struct dedoMenique : public dedos {
+    dedoMenique() {
+        comandoFlex = "menique";
+        comandoExt = "extMenique";
+        servoPin = 9;
+        potePin = A3;
+        max = 0;
+        min = 1023;
+    }
+    void flex() override;
+    void ext() override;
+    void reset() override;
+    void calibrar() override;
+    int obtenerFlexion() override;
+};
 
-void dedoAnular::calibrar()
-{
-    int lectura = analogRead(potePin);
-        if (lectura < min) min = lectura;
-        if (lectura > max) max = lectura;
-}
+struct dedoPulgar : public dedos {
+    dedoPulgar() {
+        comandoFlex = "pulgar";
+        comandoExt = "extPulgar";
+        servoPin = 10;
+        potePin = A4;
+        max = 0;
+        min = 1023;
+    }
+    void flex() override;
+    void ext() override;
+    void reset() override;
+    void calibrar() override;
+    int obtenerFlexion() override;
+};
 
-int dedoAnular::obtenerFlexion()
-{
-    // no sé si es necesario pero para evitar errores si no se calibró
-    if (max <= min) return 0;
-    int lecturaActual = analogRead (potePin);
-    int mapeado = map (lecturaActual, min, max, 0, 180);
-//Esta línea de abajo es para mantener el valor estrictamente entre 0 y 180
-    return constrain (mapeado, 0, 180);
-}
+extern dedoIndice indice;
+extern dedoMayor mayor;
+extern dedoAnular anular;
+extern dedoMenique menique;
+extern dedoPulgar pulgar;
 
-void dedoAnular::flex()
-{
-    motor.write(map(analogRead(potePin), min, max, 0, 180));
-}
-void dedoAnular::ext()
-{
-    motor.write(0);
-}
-void dedoAnular::reset()
-{
-    anular.min = 1023;
-    anular.max = 0;
-}
-
-void dedoMenique::calibrar()
-{
-    int lectura = analogRead(potePin);
-        if (lectura < min) min = lectura;
-        if (lectura > max) max = lectura;
-}
-
-int dedoMenique::obtenerFlexion()
-{
-    // no sé si es necesario pero para evitar errores si no se calibró
-    if (max <= min) return 0;
-    int lecturaActual = analogRead (potePin);
-    int mapeado = map (lecturaActual, min, max, 0, 180);
-//Esta línea de abajo es para mantener el valor estrictamente entre 0 y 180
-    return constrain (mapeado, 0, 180);
-}
-
-void dedoMenique::flex()
-{
-    motor.write(map(analogRead(potePin), min, max, 0, 180));
-}
-void dedoMenique::ext()
-{
-    motor.write(0);
-}
-void dedoMenique::reset()
-{
-    menique.min = 1023;
-    menique.max = 0;
-}
-
-void dedoPulgar::calibrar()
-{
-    int lectura = analogRead(potePin);
-        if (lectura < min) min = lectura;
-        if (lectura > max) max = lectura;
-}
-
-int dedoPulgar::obtenerFlexion()
-{
-    // no sé si es necesario pero para evitar errores si no se calibró
-    if (max <= min) return 0;
-    int lecturaActual = analogRead (potePin);
-    int mapeado = map (lecturaActual, min, max, 0, 180);
-//Esta línea de abajo es para mantener el valor estrictamente entre 0 y 180
-    return constrain (mapeado, 0, 180);
-}
-
-void dedoPulgar::flex()
-{
-    motor.write(map(analogRead(potePin), min, max, 0, 180));
-}
-void dedoPulgar::ext()
-{
-    motor.write(0);
-}
-void dedoPulgar::reset()
-{
-    pulgar.min = 1023;
-    pulgar.max = 0;
-}
+#endif
