@@ -67,6 +67,7 @@ void setup()
     mapOrders["extAnular"] = anularext;
     mapOrders["extMenique"] = meniqueext;
     mapOrders["extPulgar"] = pulgarext;
+    mapOrders ["calibrar"] = ejecutarCalibracion;
     /*
     ¿Qué es esto de aca arriba? Si sos un lector curioso y no entendés un carajo te paso un resumen:
     esto es un *Puntero de función*, ¿recordás los addEventListener() de back-end en 3ro? Sirve
@@ -78,8 +79,7 @@ void setup()
     PD: Esto podría haberse hecho con una cadena de if(orden == dedo), pero soy masoquista y está
     bueno hacer cosas nuevas.
     */
-    ejecutarCalibracion();
-    mapOrders ["calibrar"] = ejecutarCalibracion;
+
 
 }
 void loop()
