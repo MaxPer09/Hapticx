@@ -15,16 +15,16 @@ void resetServos()
 }
 
 //Lo que hay aca abajo son funciones puente globales. Como me hice el pija y guarde funciones dentro de estructuras, ahora el mapa no puede llamarlas porque no son globales, asi que hay que hacer estas funciones puente
-indiceflex(){indice.flex();}
-mayorflex(){mayor.flex();}
-anularflex(){anular.flex();}
-meniqueflex(){menique.flex();}
-pulgarflex(){pulgar.flex();}
-indiceext(){indice.ext();}
-mayorext(){mayor.ext();}
-anularext(){anular.ext();}
-meniqueext(){menique.ext();}
-pulgarext(){pulgar.ext();}
+void indiceflex(){indice.flex();}
+void mayorflex(){mayor.flex();}
+void anularflex(){anular.flex();}
+void meniqueflex(){menique.flex();}
+void pulgarflex(){pulgar.flex();}
+void indiceext(){indice.ext();}
+void mayorext(){mayor.ext();}
+void anularext(){anular.ext();}
+void meniqueext(){menique.ext();}
+void pulgarext(){pulgar.ext();}
 
 void ejecutarCalibracion() {
     indice.reset();
@@ -57,16 +57,16 @@ void setup()
     pulgar.motor.attach(pulgar.servoPin);
     resetServos(); //Se ponen todos los servomotores en "descanso"
 
-    mapOrders["indice"] = indiceflex(); 
-    mapOrders["mayor"] = mayorflex();
-    mapOrders["anular"] = anularflex();
-    mapOrders["menique"] = meniqueflex();
-    mapOrders["pulgar"] = pulgarflex();
-    mapOrders["extIndice"] = indiceext();
-    mapOrders["extMayor"] = mayorext();
-    mapOrders["extAnular"] = anularext();
-    mapOrders["extMenique"] = meniqueext();
-    mapOrders["extPulgar"] = pulgarext();
+    mapOrders["indice"] = indiceflex; 
+    mapOrders["mayor"] = mayorflex;
+    mapOrders["anular"] = anularflex;
+    mapOrders["menique"] = meniqueflex;
+    mapOrders["pulgar"] = pulgarflex;
+    mapOrders["extIndice"] = indiceext;
+    mapOrders["extMayor"] = mayorext;
+    mapOrders["extAnular"] = anularext;
+    mapOrders["extMenique"] = meniqueext;
+    mapOrders["extPulgar"] = pulgarext;
     /*
     ¿Qué es esto de aca arriba? Si sos un lector curioso y no entendés un carajo te paso un resumen:
     esto es un *Puntero de función*, ¿recordás los addEventListener() de back-end en 3ro? Sirve

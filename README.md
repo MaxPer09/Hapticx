@@ -33,3 +33,7 @@ si el arduino está energizado (no es necesario que sea por el puerto USB) y se 
 - La comunicación debería abrirse en el puerto COM5, usar ese puerto en arduino IDE para la comunicación
 
 Si no encontrás la opción de HC-06 en el listado, verificá que la luz del módulo bluetooth del guante está parpadeando rápido. Si está apagada significa que el módulo no está energizado. Si parpadea muy lento, entre 5 y 10 segundos, significa que el módulo ya está conectado a una computadora,
+
+### Observaciones y solución de problemas
+- Es posible que al momento de compilar el código haya un error del estilo "multiple definition of 'std::nothrow'". Esto es por una incompatibilidad de la librería arduinoSTL y el propio nucleo del compilador. La manera de solucionarlo es ir a la carpeta: 'C:\Users\usuario\Documents\Arduino\libraries\ArduinoSTL\src' y en el archivo new_handler.cpp comentar o borrar la línea 22 de código. 
+Una solución poco elegante pero efectiva.
