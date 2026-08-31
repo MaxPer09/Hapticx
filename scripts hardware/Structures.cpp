@@ -8,19 +8,15 @@ dedoPulgar pulgar;
 
 void dedoIndice::calibrar()
 {
-    int lectura = analogRead(potePin);
-        if (lectura < min) min = lectura;
-        if (lectura > max) max = lectura;
-}
-
-int dedoIndice::obtenerFlexion()
-{
-    // no sé si es necesario pero para evitar errores si no se calibró
-    if (max <= min) return 0;
-    int lecturaActual = analogRead (potePin);
-    int mapeado = map (lecturaActual, min, max, 0, 180);
-//Esta línea de abajo es para mantener el valor estrictamente entre 0 y 180
-    return constrain (mapeado, 0, 180);
+    float lectura = analogRead(potePin);
+    if(lectura > max)
+    {
+    max = lectura;
+    }
+    if(lectura < min)
+    {
+    min = lectura;
+    }
 }
 
 void dedoIndice::flex()
@@ -39,19 +35,15 @@ void dedoIndice::reset()
 
 void dedoMayor::calibrar()
 {
-    int lectura = analogRead(potePin);
-        if (lectura < min) min = lectura;
-        if (lectura > max) max = lectura;
-}
-
-int dedoMayor::obtenerFlexion()
-{
-    // no sé si es necesario pero para evitar errores si no se calibró
-    if (max <= min) return 0;
-    int lecturaActual = analogRead (potePin);
-    int mapeado = map (lecturaActual, min, max, 0, 180);
-//Esta línea de abajo es para mantener el valor estrictamente entre 0 y 180
-    return constrain (mapeado, 0, 180);
+    float lectura = analogRead(potePin);
+    if(lectura > max)
+    {
+    max = lectura;
+    }
+    if(lectura < min)
+    {
+    min = lectura;
+    }
 }
 
 void dedoMayor::flex()
@@ -70,19 +62,15 @@ void dedoMayor::reset()
 
 void dedoAnular::calibrar()
 {
-    int lectura = analogRead(potePin);
-        if (lectura < min) min = lectura;
-        if (lectura > max) max = lectura;
-}
-
-int dedoAnular::obtenerFlexion()
-{
-    // no sé si es necesario pero para evitar errores si no se calibró
-    if (max <= min) return 0;
-    int lecturaActual = analogRead (potePin);
-    int mapeado = map (lecturaActual, min, max, 0, 180);
-//Esta línea de abajo es para mantener el valor estrictamente entre 0 y 180
-    return constrain (mapeado, 0, 180);
+    float lectura = analogRead(potePin);
+    if(lectura > max)
+    {
+    max = lectura;
+    }
+    if(lectura < min)
+    {
+    min = lectura;
+    }
 }
 
 void dedoAnular::flex()
@@ -101,19 +89,15 @@ void dedoAnular::reset()
 
 void dedoMenique::calibrar()
 {
-    int lectura = analogRead(potePin);
-        if (lectura < min) min = lectura;
-        if (lectura > max) max = lectura;
-}
-
-int dedoMenique::obtenerFlexion()
-{
-    // no sé si es necesario pero para evitar errores si no se calibró
-    if (max <= min) return 0;
-    int lecturaActual = analogRead (potePin);
-    int mapeado = map (lecturaActual, min, max, 0, 180);
-//Esta línea de abajo es para mantener el valor estrictamente entre 0 y 180
-    return constrain (mapeado, 0, 180);
+    float lectura = analogRead(potePin);
+    if(lectura > max)
+    {
+    max = lectura;
+    }
+    if(lectura < min)
+    {
+    min = lectura;
+    }
 }
 
 void dedoMenique::flex()
@@ -132,19 +116,15 @@ void dedoMenique::reset()
 
 void dedoPulgar::calibrar()
 {
-    int lectura = analogRead(potePin);
-        if (lectura < min) min = lectura;
-        if (lectura > max) max = lectura;
-}
-
-int dedoPulgar::obtenerFlexion()
-{
-    // no sé si es necesario pero para evitar errores si no se calibró
-    if (max <= min) return 0;
-    int lecturaActual = analogRead (potePin);
-    int mapeado = map (lecturaActual, min, max, 0, 180);
-//Esta línea de abajo es para mantener el valor estrictamente entre 0 y 180
-    return constrain (mapeado, 0, 180);
+    float lectura = analogRead(potePin);
+    if(lectura > max)
+    {
+    max = lectura;
+    }
+    if(lectura < min)
+    {
+    min = lectura;
+    }
 }
 
 void dedoPulgar::flex()

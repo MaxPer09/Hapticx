@@ -36,7 +36,6 @@ class dedos
     void ext();
     void reset();
     void calibrar();
-    int obtenerFlexion();
 };
 
 struct dedoIndice : public dedos {
@@ -57,7 +56,6 @@ struct dedoIndice : public dedos {
     void ext();
     void reset();
     void calibrar ();
-    int obtenerFlexion ();
 };
 
 struct dedoMayor : public dedos {
@@ -74,7 +72,6 @@ struct dedoMayor : public dedos {
     void reset();
     // se llama repetidamente mientras el usuario abre y cierra la mano
     void calibrar ();
-    int obtenerFlexion ();
 };
 
 struct dedoAnular : public dedos {
@@ -90,7 +87,6 @@ struct dedoAnular : public dedos {
     void ext();
     void reset();
     void calibrar ();
-    int obtenerFlexion ();
 };
 
 struct dedoMenique : public dedos {
@@ -106,7 +102,6 @@ struct dedoMenique : public dedos {
     void ext();
     void reset();
     void calibrar ();
-    int obtenerFlexion ();
 };
 
 struct dedoPulgar : public dedos {
@@ -122,7 +117,6 @@ struct dedoPulgar : public dedos {
     void ext();
     void reset();
     void calibrar ();
-    int obtenerFlexion ();
 };
 
 extern dedoIndice indice;
