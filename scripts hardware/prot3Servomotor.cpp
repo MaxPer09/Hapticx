@@ -1,12 +1,10 @@
-#include "Structures.h"
+#include <Arduino.h>
 #include <Servo.h>
-#include <ArduinoSTL.h>
-#include <Map>
+#include "Structures.h"
 
-std::map<String, void(*)()> mapOrders; //Aca estoy creando un "mapa" (es parecido a los objetos de JS, pero más choto) lo voy a usar para guardar funciones.
-// mensaje del mismo progrmador pero del futuro: cambié e tipo de mapa para que pueda guardar las funciones que están dentro de una estructura, porque antes solo podía guardar funciones globales
-void resetServos()
-{
+std::map<String, void(*)()> mapOrders;
+
+void resetServos() {
     indice.ext();
     mayor.ext();
     anular.ext();
@@ -14,26 +12,15 @@ void resetServos()
     pulgar.ext();
 }
 
-//Lo que hay aca abajo son funciones puente globales. Como me hice el pija y guarde funciones dentro de estructuras, ahora el mapa no puede llamarlas porque no son globales, asi que hay que hacer estas funciones puente
-void indiceflex(){indice.flex();}
-void mayorflex(){mayor.flex();}
-void anularflex(){anular.flex();}
-void meniqueflex(){menique.flex();}
-void pulgarflex(){pulgar.flex();}
-void indiceext(){indice.ext();}
-void mayorext(){mayor.ext();}
-void anularext(){anular.ext();}
-void meniqueext(){menique.ext();}
-void pulgarext(){pulgar.ext();}
-
 void ejecutarCalibracion() {
     indice.reset();
     mayor.reset();
     anular.reset();
     menique.reset();
     pulgar.reset();
+
     unsigned long tiempoInicio = millis();
-    while (millis()-tiempoInicio < 5000){
+    while (millis() - tiempoInicio < 5000) {
         indice.calibrar();
         mayor.calibrar();
         anular.calibrar();
@@ -43,15 +30,14 @@ void ejecutarCalibracion() {
     }
 }
 
-void setup()
-{
+void setup() {
+    Serial.begin(9600);
     indice.motor.attach(indice.servoPin);
     mayor.motor.attach(mayor.servoPin);
     anular.motor.attach(anular.servoPin);
     menique.motor.attach(menique.servoPin);
     pulgar.motor.attach(pulgar.servoPin);
-    resetServos(); //Se ponen todos los servomotores en "descanso"
-
+    resetServos();
     mapOrders["indice"] = indiceflex; 
     mapOrders["mayor"] = mayorflex;
     mapOrders["anular"] = anularflex;
@@ -74,11 +60,9 @@ void setup()
     PD: Esto podría haberse hecho con una cadena de if(orden == dedo), pero soy masoquista y está
     bueno hacer cosas nuevas.
     */
-
-
 }
-void loop()
-{
+
+void loop() {
     if(Serial.available()>0)
     {
         String comando = Serial.readStringUntil('\n'); //Es FUNDAMENTAL que el que envie los comados los termine siempre con un \n, sino se coje toda la lógica.
