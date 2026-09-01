@@ -18,7 +18,6 @@ void dedoIndice::calibrar()
     min = lectura;
     }
 }
-
 void dedoIndice::flex()
 {
     motor.write(map(analogRead(potePin), min, max, 0, 180));
@@ -32,7 +31,6 @@ void dedoIndice::reset()
     indice.min = 1023;
     indice.max = 0;
 }
-
 void dedoMayor::calibrar()
 {
     float lectura = analogRead(potePin);
@@ -45,7 +43,6 @@ void dedoMayor::calibrar()
     min = lectura;
     }
 }
-
 void dedoMayor::flex()
 {
     motor.write(map(analogRead(potePin), min, max, 0, 180));
@@ -59,7 +56,6 @@ void dedoMayor::reset()
     mayor.min = 1023;
     mayor.max = 0;
 }
-
 void dedoAnular::calibrar()
 {
     float lectura = analogRead(potePin);
@@ -72,7 +68,6 @@ void dedoAnular::calibrar()
     min = lectura;
     }
 }
-
 void dedoAnular::flex()
 {
     motor.write(map(analogRead(potePin), min, max, 0, 180));
@@ -86,7 +81,6 @@ void dedoAnular::reset()
     anular.min = 1023;
     anular.max = 0;
 }
-
 void dedoMenique::calibrar()
 {
     float lectura = analogRead(potePin);

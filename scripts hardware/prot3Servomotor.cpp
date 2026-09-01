@@ -1,7 +1,8 @@
 #include <Arduino.h>
 #include <Servo.h>
 #include "Structures.h"
-
+#include <ArduinoSTL.h>
+#include <map>
 std::map<String, void(*)()> mapOrders;
 
 void resetServos() {
@@ -29,6 +30,17 @@ void ejecutarCalibracion() {
         tiempoInicio = millis();
     }
 }
+//Funciones puente globales
+void indiceflex() {indice.flex();}
+void mayorflex() {mayor.flex();}
+void anularflex() {anular.flex();}
+void meniqueflex() {menique.flex();}
+void pulgarflex() {pulgar.flex();}
+void indiceext() {indice.ext();}
+void mayorext() {mayor.ext();}
+void anularext() {anular.ext();}
+void meniqueext() {menique.ext();}
+void pulgarext() {pulgar.ext();}
 
 void setup() {
     Serial.begin(9600);
