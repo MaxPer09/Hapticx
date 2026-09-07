@@ -29,7 +29,7 @@
 - Las estructuras daban un error al compilarlas porque no pertenecían a una clase, ya creamos la clase y las hicimos hijas de la estructura "dedos".
 
 ### 7 de septiembre
-- En las ultimas clases estuvimos haciendo tests, encontrando bugs y modificando parte de la lógica para solucionarlos. Ya tenemos ya funciona bien, por suerte.
+- En las ultimas clases estuvimos haciendo tests, encontrando bugs y modificando parte de la lógica para solucionarlos. Ya funciona bien, por suerte.
 - Ahora la función calibrar() toma por sí misma el valor de su potenciometro y ajusta min y max en función de su lectura, todo de una.
 - Eliminamos la función obtenerFlexion() puesto que ya no era necesaria.
 - Adicionalmente, ya añadimos todos los modelos 3d que vamos a imprimir (por ahora, solo como prototipos) pero aún no los enviamos. 
