@@ -79,9 +79,11 @@ void loop() {
     {
         String comando = Serial.readStringUntil('\n'); //Es FUNDAMENTAL que el que envie los comados los termine siempre con un \n, sino se coje toda la lógica.
         comando.trim();
-        if (mapOrders.count(comando) > 0) {
-            mapOrders[comando](); //<------------
-          } else {
+        auto posicion = mapOrders.find(comando);
+        if (posicion != mapOrders.end()) 
+        {
+            posicion->second(); //<-------
+        } else {
             Serial.print("Comando ");
             Serial.print(comando);
             Serial.println(" no encontrado. Revisar sintaxis");
