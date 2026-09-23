@@ -36,3 +36,7 @@
 - Nota: Necesitamos obtener, de alguna manera, los resortes para tensar el potenciometro.
 - Nota 2: Aún no tenemos decidido como vamos a energizar el guante en sí, puesto que las baterías suelen ser muy grandes y pesadas.
 - Sin miedo al éxito.
+
+### 23 de septiembre
+- Desde la anterior entrada hasta ahora, estuvimos construyendo el sistema mecánico de resortes y Servomotores que se montará en el guante. Ya están todos los resortes armados para los 5 dedos
+- Empezamos el prototipo de código 4, que busca ser el prototipo final, pero depende de como resulte, es experimental.
