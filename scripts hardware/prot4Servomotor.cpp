@@ -3,9 +3,10 @@
 #include "Structures4.h"
 #include <ArduinoSTL.h>
 #include <map>
+#include <iostream>
 //¡Este es parte de un sketch de prueba! al menos por ahora, la versión oficial es el prototipo 3
-
 std::map<String, void(*)()> mapOrders;
+dedos* objetos[5];
 
 void resetServos() {
     indice.ext();
@@ -29,11 +30,16 @@ void pulgarext() {pulgar.ext();}
 
 void setup() {
     Serial.begin(9600);
-    indice.motor.attach(indice.servoPin);
-    mayor.motor.attach(mayor.servoPin);
-    anular.motor.attach(anular.servoPin);
-    menique.motor.attach(menique.servoPin);
-    pulgar.motor.attach(pulgar.servoPin);
+    //Este es el experimento en cuestión, un array de objetos:
+    objetos[0] = new pulgar();
+    objetos[1] = new indice();
+    objetos[2] = new mayor();
+    objetos[3] = new anular();
+    objetos[4] = new menique();
+    for (int i = 0; i <= 4; i++)
+    {
+        objetos[i].motor.attatch(objetos[i].servoPin);
+    }
     resetServos();
     
     mapOrders["indice"] = indiceflex; 
@@ -46,7 +52,6 @@ void setup() {
     mapOrders["extAnular"] = anularext;
     mapOrders["extMenique"] = meniqueext;
     mapOrders["extPulgar"] = pulgarext;
-    mapOrders ["calibrar"] = ejecutarCalibracion;
     /*
     ¿Qué es esto de aca arriba? Si sos un lector curioso y no entendés un carajo te paso un resumen:
     esto es un *Puntero de función*, ¿recordás los addEventListener() de back-end en 3ro? Sirve

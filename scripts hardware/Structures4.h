@@ -6,10 +6,10 @@
 //¡Esto es parte de un sketch de prueba! Al menos por ahora, la versión oficial es el prototipo 3
 class dedos {
 public:
+    virtual ~dedos() = default;
     Servo motor;
     int servoPin;
     int potePin;
-
     void flex();
     void ext();
 };
