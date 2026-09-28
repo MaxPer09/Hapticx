@@ -1,88 +1,30 @@
-#include <Arduino.h>
 #include <Servo.h>
 #include "Structures4.h"
-#include <ArduinoSTL.h>
-#include <map>
-#include <iostream>
 //¡Este es parte de un sketch de prueba! al menos por ahora, la versión oficial es el prototipo 3
-std::map<String, void(*)()> mapOrders;
 dedos* objetos[5];
-
 void resetServos() {
-    indice.ext();
-    mayor.ext();
-    anular.ext();
-    menique.ext();
-    pulgar.ext();
+    for(int i = 0; i <=4; i++){objetos[i]->ext();}
 }
-
-//Funciones puente globales
-void indiceflex() {indice.flex();}
-void mayorflex() {mayor.flex();}
-void anularflex() {anular.flex();}
-void meniqueflex() {menique.flex();}
-void pulgarflex() {pulgar.flex();}
-void indiceext() {indice.ext();}
-void mayorext() {mayor.ext();}
-void anularext() {anular.ext();}
-void meniqueext() {menique.ext();}
-void pulgarext() {pulgar.ext();}
-
 void setup() {
     Serial.begin(9600);
     //Este es el experimento en cuestión, un array de objetos:
-    objetos[0] = new pulgar();
-    objetos[1] = new indice();
-    objetos[2] = new mayor();
-    objetos[3] = new anular();
-    objetos[4] = new menique();
-    for (int i = 0; i <= 4; i++)
-    {
-        objetos[i].motor.attatch(objetos[i].servoPin);
-    }
+    objetos[0] = &pulgar;
+    objetos[1] = &indice;
+    objetos[2] = &mayor;
+    objetos[3] = &anular;
+    objetos[4] = &menique;
+    for (int i = 0; i <= 4; i++){objetos[i]->motor.attach(objetos[i]->servoPin);}
     resetServos();
-    
-    mapOrders["indice"] = indiceflex; 
-    mapOrders["mayor"] = mayorflex;
-    mapOrders["anular"] = anularflex;
-    mapOrders["menique"] = meniqueflex;
-    mapOrders["pulgar"] = pulgarflex;
-    mapOrders["extIndice"] = indiceext;
-    mapOrders["extMayor"] = mayorext;
-    mapOrders["extAnular"] = anularext;
-    mapOrders["extMenique"] = meniqueext;
-    mapOrders["extPulgar"] = pulgarext;
-    /*
-    ¿Qué es esto de aca arriba? Si sos un lector curioso y no entendés un carajo te paso un resumen:
-    esto es un *Puntero de función*, ¿recordás los addEventListener() de back-end en 3ro? Sirve
-    para más o menos lo mismo. Se asocia una función a una clave y esa clave es el comando que se recibe
-    por el puerto serial. En resumen, cuando llega una orden se busca en el fichero (que es esta lista con
-    clave = función) qué función le corresponde, que en este caso va a ser activar un servomotor distinto 
-    por cada dedo. Lo bueno de esto es que es escalable, solo con añadir un puntero de función más 
-    se puede hacer funcionar un comando nuevo.
-    PD: Esto podría haberse hecho con una cadena de if(orden == dedo), pero soy masoquista y está
-    bueno hacer cosas nuevas.
-    */
 }
-
 void loop() {
     if(Serial.available()>0)
     {
         String comando = Serial.readStringUntil('\n'); //Es FUNDAMENTAL que el que envie los comados los termine siempre con un \n, sino se coje toda la lógica.
         comando.trim();
-        auto posicion = mapOrders.find(comando);
-        if (posicion != mapOrders.end()) 
+        for(int i = 0; i <= 4; i++)
         {
-            posicion->second(); //<-------
-        } else {
-            Serial.print("Comando ");
-            Serial.print(comando);
-            Serial.println(" no encontrado. Revisar sintaxis");
-            /*
-            Esto es lo que dije antes. se indica que se va a usar una función que está dentro del mapa 
-            "mapOrders", se pone el comando que llegó desde el puerto serial y se agregan unos () al final
-            para indicar que es una función que se debe ejecutar.
-            */
-          }
+            if(comando == objetos[i]->comandoExt){objetos[i]->ext();}
+            if(comando == objetos[i]->comandoFlex){objetos[i]->flex();}         
+        }
     }
 }
