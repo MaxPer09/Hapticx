@@ -3,7 +3,6 @@
 
 #include <Arduino.h>
 #include <Servo.h>
-//¡Esto es parte de un sketch de prueba! Al menos por ahora, la versión oficial es el prototipo 3
 class dedos {
 public:
     Servo motor;

@@ -1,5 +1,4 @@
 #include "Structures4.h"
-//¡Este es parte de un sketch de prueba! al menos por ahora, la versión oficial es el prototipo 3
 
 dedoIndice indice;
 dedoMayor mayor;
@@ -9,7 +8,12 @@ dedoPulgar pulgar;
 
 void dedos :: flex() 
 {
-    motor.write(map(analogRead(potePin), 0, 1023, 0, 180));
-    Serial.print("Comando de flexionar dedo "); Serial.println(nombre);
+    float grados = map(analogRead(potePin), 0, 1023, 0, 180)*2;
+    motor.write(grados);
+    Serial.print("Comando de flexionar dedo "); Serial.println(comandoFlex);
 }
-void dedos :: ext() {motor.write(0);}
+void dedos :: ext() 
+{
+    motor.write(0);
+    Serial.print("Comando de extender dedo "); Serial.println(comandoExt);
+}

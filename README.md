@@ -5,7 +5,7 @@ Repositorio para el proyecto Haptixc. Guante háptico para VR. Acá encontrarás
 ## Pasos para cargar el código en la computadora local y arduino
 Los siguientes pasos solo se tendrán que hacer una vez en la computadora que se va a usar durante todo el proyecto y presentación (obviamente esa computadora no tiene que estar frezzada). Al menos por ahora estamos usando la n23 del carro azul.
 
-- Creá un sketch nuevo en arduino IDE y pegá en el el script de c++ principal (al menos por ahora, es prot3Servomotor.cpp).
+- Creá un sketch nuevo en arduino IDE y pegá en el el script de c++ principal (al menos por ahora, es prot4Servomotor.cpp).
 - en ese mismo sketch de arduino, andá a los tres puntos (...) de arriba a la derecha y presioná "new tab" o "nueva pestaña"
 - Nombrá esa pestaña "Structures.h"
 - En esa nueva pestaña que creaste, pegá todo el código que está en el archivo Structures.h de este repositorio, dentro de la carpeta "scripts hardware"
