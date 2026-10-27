@@ -8,7 +8,7 @@ dedoPulgar pulgar;
 
 void dedos :: flex() 
 {
-    float grados = map(analogRead(potePin), 0, 1023, 0, 180)*2;
+    float grados = map(analogRead(potePin), 0, 1023, 0, 180)*2; //multiplicamos el ángulo *2 porque sino el servomotor solo se mueve la mitad de lo que debería, ni idea pq
     motor.write(grados);
     Serial.print("Comando de flexionar dedo "); Serial.println(comandoFlex);
 }
